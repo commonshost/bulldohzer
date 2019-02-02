@@ -346,7 +346,7 @@ function statement () {
   ]
   const verb = pickOne(verbs)
   const adjective = pickOne(adjectives)
-  const article = adjective.startsWith('a') ? 'an' : 'a'
+  const article = /^[aeiou]/.test(adjective) ? 'an' : 'a'
   const noun = pickOne(animals)
   return `${verb} by ${article} ${adjective} ${noun} at`
 }
