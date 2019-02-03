@@ -1,8 +1,17 @@
 # bulldohzer 🚜
 
-Find the fastest DNS resolver for you.
+Find the fastest DNS or DoH resolver for you.
 
 **Bulldohzer** is a performance measurement tool for DNS. It supports HTTPS (DoH) and DNS over UDP.
+
+```
+$ npx bulldohzer --doh commonshost cleanbrowsing \
+                       cloudflare quad9 powerdns
+```
+
+![Screenshot](https://raw.githubusercontent.com/commonshost/bulldohzer/master/assets/bulldohzer.png)
+
+## Introduction
 
 Many public DNS benchmark reports measure from test machines in datacentres to DNS servers in datacentres. Good for marketing but irrelevant for end users. The best benchmark is the one you run yourself from your network on your device.
 
@@ -11,8 +20,6 @@ Traditional DNS is heavily optimised due to decades of widespread use. Unfortuna
 Benchmarking DoH resolvers can help implementors and operators to improve services for users. Feel free to share your findings. *"If you can not measure it, you can not improve it."*
 
 Bulldohzer reports measurements in a human friendly table with graphs (`--report`), or export as JSON for developers and machines alike (`--json`).
-
-Requires Node.js v11.7.0 or later. Fancy magic.
 
 ## Usage
 
@@ -87,54 +94,125 @@ $ npx bulldohzer --dns 10.53.53.53 -q 1000000
 $ NODE_TLS_REJECT_UNAUTHORIZED=0 bulldozer --doh https://localhost:8443/doh-query
 ```
 
+## Examples
+
+### Compare several DoH resolvers.
+
+    --doh commonshost cleanbrowsing cloudflare quad9 powerdns
+
+### Compare DoH and DNS latency from the same providers.
+
+    --dns cleanbrowsing cloudflare quad9 --doh cleanbrowsing cloudflare quad9
+
+### Benchmark a custom DoH resolver URL and output only raw NDJSON data.
+
+    --doh www.machinesung.com --ndjson --no-report
+
+### Pipe JSON output to save as a Comma Separated Values (CSV) file.
+
+    --doh commonshost --ndjson | npx ndjson2csv > results.csv
+
 ### Help
 
 ```
 $ npx bulldohzer --help
-
-Options:
-  --doh                      URLs or shortnames of DNS over HTTPS resolvers
-                                                           [array] [default: []]
-  --dns                      IPs or shortnames of DNS over UDP resolvers
-                                                           [array] [default: []]
-  --queries, -q              Number of domain resolutions to perform
-                                                          [number] [default: 10]
-  --names, -n                Domain names to resolve
-                                                [array] [default: "example.com"]
-  --rrtype, --rr             Resource record type of the query
-                                                         [string] [default: "A"]
-  --proxy                    Use a DNS to DoH proxy server
-                                                      [boolean] [default: false]
-  --percentiles, -p          Percentile measurement times in milliseconds
-                                                    [array] [default: [5,50,95]]
-  --histogram                Include all percentiles from 1 through 100 (only
-                             with --ndjson)           [boolean] [default: false]
-  --ndjson, --jsonl, --json  Output as NDJSON         [boolean] [default: false]
-  --report                   View results as table and graphs
-                                                       [boolean] [default: true]
-  --spinner                  Animation to soothe the mind while waiting
-                                                       [boolean] [default: true]
-  --version                  Show version number                       [boolean]
-  --help                     Show help                                 [boolean]
-
-Examples:
-  --doh commonshost cleanbrowsing cloudflare quad9 powerdns
-  Compare several DoH resolvers.
-
-  --dns cleanbrowsing cloudflare quad9 --doh cleanbrowsing cloudflare quad9
-  Compare DoH and DNS latency from the same providers.
-
-  --doh www.machinesung.com --ndjson --no-report
-  Benchmark a custom DoH resolver URL and output only raw NDJSON data.
-
-  --doh commonshost --ndjson | npx ndjson2csv > results.csv
-  Pipe JSON output to save as a Comma Separated Values (CSV) file.
-
-  Shortnames mapping to an IP (DNS) or URL (DoH):
-  - DoH: cleanbrowsing, cloudflare, commonshost, google, keoweon, mozilla,
-  nekomimi, powerdns, quad9, rubyfish, securedns
-  - DNS: cleanbrowsing, cloudflare, google, quad9
 ```
+
+## Options
+
+### `--doh`
+
+Array of URLs or shortnames of DNS over HTTPS resolvers.
+
+Default: `[]`
+
+### `--dns`
+
+Array of IPs or shortnames of DNS over UDP resolvers.
+
+Default: `[]`
+
+### `--queries`, `-q`
+
+Number of domain resolutions to perform.
+
+Default: `10`
+
+### `--names`, `-n`
+
+Array of domain names to resolve.
+
+Default: `[ "example.com" ]`
+
+### `--rrtype`, `--rr`
+
+Resource record type of the query.
+
+Default: `"A"`
+
+### `--proxy`
+
+Use a DNS to DoH proxy server.
+
+Default: `false`
+
+### `--percentiles`, `-p`
+
+Array of percentile measurement times in milliseconds.
+
+Default: `[ 5, 50, 95 ]`
+
+### `--histogram`
+
+Include all percentiles from 1 through 100 (only with --ndjson)
+
+Default: `false`
+
+### `--ndjson`, `--jsonl`, `--json`
+
+Output as NDJSON
+
+Default: `false`
+
+### `--report`
+
+View results as table and graphs
+
+Default: `true`
+
+### `--spinner`
+
+Animation to soothe the mind while waiting
+
+Default: `true`
+
+### `--version`
+
+Show version number
+
+### `--help`
+
+Show help
+
+### Shortnames mapping to an IP (DNS) or URL (DoH)
+
+- DoH:
+  - cleanbrowsing
+  - cloudflare
+  - commonshost
+  - google
+  - keoweon
+  - mozilla
+  - nekomimi
+  - powerdns
+  - quad9
+  - rubyfish
+  - securedns
+- DNS:
+  - cleanbrowsing
+  - cloudflare
+  - google
+  - quad9
 
 ## Imaginary Property Rights
 
