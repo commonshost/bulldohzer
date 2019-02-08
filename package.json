@@ -1,6 +1,6 @@
 {
   "name": "bulldohzer",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Performance measurement and benchmarking for DNS over HTTPS and DNS over UDP resolvers",
   "license": "ISC",
   "repository": "github:commonshost/bulldohzer",
