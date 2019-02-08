@@ -17,6 +17,9 @@ const {
   }
 } = require('http2')
 
+const TIMEOUT_REQUEST = 5000 // ms
+const RATE_LIMIT_COOLDOWN = 100 // ms
+
 async function measureDns (dnsServer, options) {
   let fail = 0
   let pass = 0
@@ -77,7 +80,7 @@ function resolveDoh (session, path, name, rrtype) {
     headers[HTTP2_HEADER_PATH] = path
     const timeout = setTimeout(() => {
       reject(new Error('Request timeout'))
-    }, 2000)
+    }, TIMEOUT_REQUEST)
     performance.mark('dns-before')
     let stream
     try {
@@ -92,7 +95,6 @@ function resolveDoh (session, path, name, rrtype) {
       if (status !== 200) {
         clearTimeout(timeout)
         stream.close()
-        const RATE_LIMIT_COOLDOWN = 100
         await waste(RATE_LIMIT_COOLDOWN)
         reject(new Error(`HTTP response status code ${status}`))
       }
