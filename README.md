@@ -1,4 +1,4 @@
-# bulldohzer 🚜
+# Bulldohzer
 
 Find the fastest DNS or DoH resolver for you.
 
@@ -21,8 +21,6 @@ Benchmarking DoH resolvers can help implementors and operators to improve servic
 
 Bulldohzer reports measurements in a human friendly table with graphs (`--report`), or export as JSON for developers and machines alike (`--json`).
 
-## Imaginary Property Rights
+## Credits
 
-All content in this repository is published under the [ISC License](https://opensource.org/licenses/ISC).
-
-Made with ❤️ by [Sebastiaan Deckers](https://twitter.com/sebdeckers) for 🐑 [Commons Host](https://commons.host).
+Made by [Sebastiaan Deckers](https://twitter.com/sebdeckers) for 🐑 [Commons Host](https://commons.host).
