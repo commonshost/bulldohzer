@@ -46,6 +46,7 @@ USER root
 
 # create link in path
 RUN ln -s /app/source/bin.js /usr/local/bin/bulldohzer
+RUN chmod +x /app/source/bin.js
 
 # remove qemu binaries used for cross-compiling
 RUN rm /usr/bin/qemu-*

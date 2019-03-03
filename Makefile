@@ -121,13 +121,10 @@ build: qemu-user-static
 ##
 .PHONY: test
 test: qemu-user-static qemu-arm-static qemu-aarch64-static
-	$(eval CONTAINER_ID=$(shell docker run --rm -d \
+	@docker run --rm \
 		-v "$(CURDIR)/qemu-arm-static:/usr/bin/qemu-arm-static" \
 		-v "$(CURDIR)/qemu-aarch64-static:/usr/bin/qemu-aarch64-static" \
-		-p 53:53/tcp -p 53:53/udp ${DOCKER_REPO}:${DOCKER_TAG} --listen 0.0.0.0:53 --doh commonshost))
-	dig sigok.verteiltesysteme.net @127.0.0.1 | grep NOERROR || (docker stop ${CONTAINER_ID}; exit 1)
-	dig sigfail.verteiltesysteme.net @127.0.0.1 | grep SERVFAIL || (docker stop ${CONTAINER_ID}; exit 1)
-	@docker stop ${CONTAINER_ID}
+		${DOCKER_REPO}:${DOCKER_TAG} --doh commonshost
 
 ## Push an image to the configured docker repo
 ## eg. make push [ARCH=] [DOCKER_REPO=]

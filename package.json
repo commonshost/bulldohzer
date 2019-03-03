@@ -5,7 +5,7 @@
   "license": "ISC",
   "repository": "github:commonshost/bulldohzer",
   "author": "Sebastiaan Deckers <sebdeckers83@gmail.com>",
-  "main": "index.js",
+  "main": "source/bulldohzer.js",
   "bin": {
     "bulldohzer": "source/bin.js"
   },
