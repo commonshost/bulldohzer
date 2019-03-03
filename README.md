@@ -2,11 +2,11 @@
 
 Find the fastest DNS or DoH resolver for you.
 
-**Bulldohzer** is a performance measurement tool for DNS. It supports HTTPS (DoH) and DNS over UDP.
+**Bulldohzer** is a performance measurement tool for DNS. It supports DNS-over-HTTPS (DoH) and DNS-over-UDP (Do53).
 
-```
-$ npx bulldohzer --doh commonshost cleanbrowsing \
-                       cloudflare quad9 powerdns
+```shell
+$ bulldohzer --doh commonshost cleanbrowsing \
+                   cloudflare quad9 powerdns
 ```
 
 ![Screenshot](https://raw.githubusercontent.com/commonshost/bulldohzer/master/assets/bulldohzer.png)
