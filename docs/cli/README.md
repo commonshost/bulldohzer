@@ -91,7 +91,7 @@ $ bulldohzer --dns 10.53.53.53 -q 1000000
 ### Ignore TLS warnings
 
 ```shell
-$ NODE_TLS_REJECT_UNAUTHORIZED=0 bulldozer --doh https://localhost:8443
+$ NODE_TLS_REJECT_UNAUTHORIZED=0 bulldohzer --doh https://localhost:8443
 ```
 
 ## Examples
