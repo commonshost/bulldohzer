@@ -9,7 +9,7 @@ $ bulldohzer --doh commonshost cleanbrowsing \
                    cloudflare quad9 powerdns
 ```
 
-![Screenshot](https://raw.githubusercontent.com/commonshost/bulldohzer/master/assets/bulldohzer.png)
+![Screenshot](./bulldohzer.png)
 
 ## Introduction
 
