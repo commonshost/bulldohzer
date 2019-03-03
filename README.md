@@ -1,7 +1,5 @@
 # Bulldohzer
 
-Find the fastest DNS or DoH resolver for you.
-
 **Bulldohzer** is a performance measurement tool for DNS. It supports DNS-over-HTTPS (DoH) and DNS-over-UDP (Do53).
 
 ```shell
