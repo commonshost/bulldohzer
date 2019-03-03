@@ -7,7 +7,7 @@
   "author": "Sebastiaan Deckers <sebdeckers83@gmail.com>",
   "main": "index.js",
   "bin": {
-    "bulldohzer": "src/bin.js"
+    "bulldohzer": "source/bin.js"
   },
   "scripts": {
     "test": "npm run lint && npm run proof",
