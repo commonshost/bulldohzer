@@ -221,3 +221,4 @@ Show help
   - cloudflare
   - google
   - quad9
+  - verisign
