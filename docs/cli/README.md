@@ -72,9 +72,21 @@ $ bulldohzer \
 
 ### Output as NDJSON
 
+Generates newline seperated JSON data for further processing.
+
+Also known as JSON lines or JSONL.
+
 ```shell
-$ bulldohzer --ndjson --no-report --dns google cloudflare quad9
+$ bulldohzer \
+  --dns google cloudflare quad9 \
+  --doh cloudflare commonshost google \
+  --json \
+  --percentiles {1..100} \
+  --no-spinner \
+  --no-report
 ```
+
+Note the use of Bash-style number range to generate a list of percentiles. Can alternatively be specified as: `--percentiles 5 10 50 75 95 99`
 
 ### Export to CSV
 
